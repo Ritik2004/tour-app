@@ -26,6 +26,20 @@ export const register = createAsyncThunk("auth/register", async({formValue, navi
     }   
 })
 
+export const googleSignIn = createAsyncThunk("auth/googleSignIn", 
+  async({result, navigate, toast},{rejectWithValue})=>{
+    try{
+         const response = await api.signUp(result);
+         toast.success("Google Sign-in Successfully");
+         navigate("/");
+         return response.data;
+    }
+    catch(err){
+     return rejectWithValue(err.response.data);
+    }   
+})
+
+
 const authSlice = createSlice({
     name:"auth",
     initialState:{

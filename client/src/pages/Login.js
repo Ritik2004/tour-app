@@ -42,18 +42,18 @@ const Login = () => {
         dispatch(login({formValue, navigate, toast}));
        
       }
-  }
+  } 
 
   const onInputChange = (e) => {
        let {name, value} = e.target;
 
        setFormValue({...formValue,[name]:value })
   }
-  const googleSuccess = () => {
-
+  const googleSuccess = (resp) => {
+         console.log(resp)
   }
-  const googleFailure = () => {
-
+  const googleFailure = (error) => {
+        toast.error(error)
   }
   return (
     <div className="body">
@@ -88,12 +88,13 @@ const Login = () => {
           </div>
           <br/>
           <button type="submit" className="btn">Login</button>
+          <br/>
           <GoogleLogin
-            clientId="Your Client Id"
+            clientId="88299443159-jhredfgmmhvj08j4lupvg8acqskq53vb.apps.googleusercontent.com"
             render={(renderProps) => (
               <MDBBtn className="gbtn"
                 
-                onClick={renderProps.onClick}
+                onClick={(renderProps.onClick)}
                 disabled={renderProps.disabled}
               >
                 <MDBIcon className="me-2" fab icon="google" /> Google Sign In
