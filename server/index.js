@@ -4,6 +4,7 @@ import cors from "cors"
 import morgan from "morgan"
 import bodyParser from "body-parser";
 import userRouter from "./routes/user.js"
+import tourRouter from './routes/tour.js'
 
 import { Connection } from "./data/db.js"
 
@@ -21,6 +22,7 @@ app.use(morgan("dev"));
 
 //signup api
 app.use("/users", userRouter);
+app.use("/tour", tourRouter);
 
 Connection();
 
